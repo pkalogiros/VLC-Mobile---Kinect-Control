@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<head>
+	<title>VLC media player - Kinect Interface</title>
+  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name = "viewport" content = "width=device-width, maximum-scale=1.0, initial-scale = 1.0" />
+	<meta name = "format-detection" content = "telephone=no">
+
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<!--[if IE ]>
+		<link href="iehacks.css" rel="stylesheet" type="text/css" />
+	<![endif]-->
+	<script type="text/javascript" src="js/kinect.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+</head>
+
+<body id="body">
+	<noscript>
+	  <p>Warning: Your browser doesn't support JavaScript.</p>
+	</noscript>
+	
+	<div style="width:100%; background:#222222; border-radius:8px;height:30px;">
+		<div id="scrub" style="top:2px;"></div>
+	</div>
+	
+	<button onclick="window.deactivateKinect(this)"> DEACTIVATE KINECT </button>
+	
+	<div id="info"></div>
+	
+	<script type="text/javascript">
+		window.deactivateKinect = function( q ) {
+			window.kinect_off = !window.kinect_off;
+			
+			if( window.kinect_off )
+				q.innerHTML = 'ACTIVATE KINECT';
+			else
+				q.innerHTML = 'DEACTIVATE KINECT';
+		};
+		
+		(function( window, kinect ) {
+			kinect.setUp({
+					players  	: 1,				//num of players
+					relative 	: true,				//tracking mode
+					meters	 	: false,			//tracking mode continued
+					sensitivity : 1.2,				//semsitivity
+					joints	 	: [ 'HAND_RIGHT', 'HANDS_DIST' ],	//tracked nodes
+					gestures 	: [ 'SWIPE', 'HANDS_DIST', 'ESCAPE' ]								//tracked gestures
+				})
+				.sessionPersist()	//keep the session between page loads (of the same domain)
+				.modal.make( 'js/knctModal.css' )		//kickstarting the modal						
+				.notif.make();		//kickstarting the notifications
+			
+			kinect
+			.addEventListener( 'gestureEscape', function( args ) {
+				if( args[ 1 ] )
+				{
+					window.escape = true;
+					if( kinect.coords[ 0 ][ 0 ].z > -50 )
+						vlcJS.pl_pause();
+				}
+				else
+					window.escape = false;
+				
+				return false;
+			})
+			.addEventListener( 'escapeInterval', function() {
+				if( kinect.coords[ 0 ][ 0 ].z > -50 )
+					vlcJS.pl_stop();
+					
+				return false;
+			})
+			.addEventListener( 'gestureSwipe', function( args ) {
+				if( args[ 0 ] !== 0 )
+					return false;
+					
+				if( args[ 1 ] === 11 )
+				{
+					if( args[ 2 ] === 'left' )
+						vlcJS.pl_next();
+					else if( args[ 2 ] === 'right' )
+						vlcJS.pl_previous()
+					else if( args[ 2 ] === 'bottom' )
+						vlcJS.mute();
+				}
+				return false;
+			})
+			.addEventListener( 'gestureCrank_ON', function( args ) {
+				window.hands_rotation = true;
+				return false;
+			})
+			.addEventListener( 'gestureCrank_OFF', function( args ) {
+				window.hands_rotation = false;
+				return false;
+			});
+			
+		
+		//VLC interval data
+		var volume_wait,
+			seeker_wait,
+			volume_interval = setInterval( function() {
+				volume_wait = true;
+			}, 60 ),
+			seeker_wait = setInterval( function() {
+				seeker_wait = true;
+			}, 140 );
+			
+		kinect.onMessage( function( e ) {
+			if( window.kinect_off )
+				return false;
+
+			if( window.hands_rotation )
+			{
+					//find angle and set volume
+				//Calculating hands angle
+				var dist = this.coords[ 0 ][ 1 ];
+				
+				//if distance is set, and the hands are not away from each other by 14% of their length
+				if( dist && Math.abs( dist.z ) < 14 )
+				{
+					//go for interval
+					if( volume_wait )
+					{
+						//if the hands are not very far from each other on the x & y, axis.
+						if( Math.max( Math.abs( dist.x ), Math.abs( dist.y ) ) > 47 )
+							return false;
+
+						//calculate angle
+						dist = (( Math.atan2( dist.x, dist.y ) * ( 180 / Math.PI ) ) >> 0 ) + 90;
+						dist = dist > 180 ? dist - 360 : ( dist < -180 ? dist + 360 : dist );
+						dist = ( ( dist ) * -3 ) + 180;
+						dist = dist < 0 ? 0 : ( dist > 400 ? 400 : dist );
+					
+
+						vlcJS.set_volume( dist >> 0 );
+						volume_wait = false;
+					}
+				}
+				return false;
+			}
+			else
+			{
+				//seeker
+				if( window.escape && ( this.coords[ 0 ][ 0 ].z < -53 ) )
+				{
+					if( seeker_wait )
+					{
+						var x = this.coords[ 0 ][ 0 ].x;
+						x = ( x + 100 / 2 );
+						x = x < 0 ? 0 : ( x > 100 ? 100 : x );
+
+						vlcJS.seek( x >> 0 );
+						seeker_wait = false;
+					}
+					
+				}
+			}
+		});
+			
+		})( window, kinect );
+	</script>
+
+	</body>
+</html>
