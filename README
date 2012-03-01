@@ -1,1 +1,43 @@
-//////
+VLC Mobile/Kinect Controls, aims to new ways to access and control the VLC Media Player.
+
+Version 1,
+
+Supports only VLC 1.1 yet, support for VLC2, is on its way.
+
+How to install,
+Navigate to your VideoLan folder (for example, C:\Program Files (x86)\VideoLAN\VLC\ ) and open the http file,
+if you want make a back up of its contents, and then place in it the contents of this repo.
+
+Then fire up VLC, and go to : tools > preferences, select 'Show Settings: All' (at the bottom), and then 
+interface > Main interfaces  and check HTTP remote control interface.
+
+Close and re-open VLC, you might get a message saying that you must allow VLC to access your network connection etc.
+Say yes to all. Congratulations!
+
+
+Mobile Version (index.html)
+Supported OS, iOs (3+), Android 2.1+, wp7 (7.0+). The code has added fallbacks for older devices, 
+but no extensive testing has took place yet.
+
+Functionality
+- Seeker, volume control, fullscreen control, taking snapshots, controlling the playlist, navigating the filesystem
+
+How to usethe Mobile Version,
+After having installed the custom controls, make sure that your cellphone is connected on the same wifi as the 
+VLC host computer, and navigate to vlc_host_machine_ip_address:8080
+
+
+
+Kinect version (index.kinect.html)
+Supports the following gestures,
+- Escape : for pause, play. If you hold the Escape Position, for more than 2 seconds then playback is stopped)
+- Swipes : swipe left/right, navigates the qeued files. Bottom Swipe mutes the audio.
+- Crank Gesture : Controls the volume. Clockwise hand rotation raises the volume, whereas anti-clockwise lowers it
+
+- Right hand movement while left hand is in the Escape Position : controls the seeker
+
+
+How to use the Kinect Version,
+Install and run the KinectSocketServer.exe ( http://kinect.childnodes.com ), fire up VLC 
+(with the custom controls set up) and navigate to localhost:8080/index.kinect.html, when asked 
+input the port specified in the KinectSocketServer app, step back so that the kinect sees you.
