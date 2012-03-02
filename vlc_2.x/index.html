@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head>
+	<title>VLC media player - Cellphone Interface</title>
+  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name = "viewport" content = "width=device-width, maximum-scale=1.0, initial-scale = 1.0" />
+	<meta name = "format-detection" content = "telephone=no">
+
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<!--[if IE ]>
+		<link href="iehacks.css" rel="stylesheet" type="text/css" />
+	<![endif]-->
+	<script type="text/javascript" src="js/birdsong.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+</head>
+
+<body id="body">
+	<noscript>
+	  <hr/>
+	  <p>Warning: Your browser doesn't support JavaScript.</p>
+	  <hr/>
+	</noscript>
+	
+	<div id="header">
+		<a href="#" id="first" onclick="vlcJS.activate(0)" class="act">controls</a>
+		<a href="#" id="second" onclick="update_playlist();vlcJS.activate(1)">playlist</a>
+		<a href="#" id="third" onclick="vlcJS.activate(2)">files</a>
+	</div>
+	<div id="wrap">
+		<div class="pageContainer one">
+			<div class="section" id="one">
+				<h1 id="currItem"><span id="name">Now playing</span> <span id="time">00:10</span> / <span id="length">00:00</span></h1>
+				<a href="#" class="button width46" id="pauseButton" onclick="vlcJS.pl_pause()">PLAY</a>
+				<a href="#" class="button width46 floatRight" onclick="vlcJS.pl_stop()">STOP</a>
+				
+				<div class="slider" onmousedown="birdsong.sliderStart(this,event,1);"><div id="scrub" onmousedown="" class="scrub"></div><div id="bar"></div></div>
+				
+				<div class="clear"></div>
+				
+				<div class="col">
+					<a href="#" class="button volume" onclick="vlcJS.volume_up()">+</a>
+					<span id="volLevel"><span id="volume">10</span></span>
+				</div>
+				<div class="col">
+					<a href="#" class="button volume" onclick="vlcJS.volume_down()">-</a>
+					<a href="#" class="button mute" onclick="vlcJS.mute()">MUTE</a>
+				</div>
+				
+				<div class="clear"></div>
+				
+				<a href="#" class="button width46" id="seekLeft" onclick="vlcJS.pl_previous()"><<</a>
+				<a href="#" class="button width46 floatRight" onclick="vlcJS.pl_next()" id="seekRight">>></a>
+				
+				<div class="clear"></div>
+				
+				<a href="#" class="button large" onclick="vlcJS.fullscreen()">fullscreen</a>
+				<div class="clear"></div>
+				<a href="#" class="button large" onclick="vlcJS.snapshot()">snapshot</a>
+				
+				<div class="clear"></div>
+				
+				<div id="info">
+					//artist info data
+				</div>
+				
+			</div>	
+		</div>
+		
+		<div class="pageContainer two">
+			<div class="section" id="two">
+				<h1>Playlist</h1>
+				<a href="#" class="button" onclick="vlcJS.pl_empty()">Empty</a>
+				<a href="#" class="button middl" onclick="vlcJS.pl_loop()">Loop</a>
+				<a href="#" class="button last" onclick="vlcJS.pl_shuffle()">Shuffle</a>
+				
+				<input type="hidden" id="browse_dest" value="" />
+				<input type="hidden" id="browse_lastdir" value="~" />
+				
+				<div class="clear"></div>
+				
+				<ul id="playlist">
+					<li>sample <a href="#">X</a></li>
+				</ul>
+			</div>	
+		</div>
+		
+		<div class="pageContainer three">
+			<div id="three">
+				<div class="section">
+					<h1>Open File</h1>
+					<a href="#" class="button width100" onclick="vlcJS.browse('input_file_filename')">OPEN</a>
+				</div>
+				
+				<div class="section">
+					<h1>File Browser</h1>
+					<ul id="fileList">
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+
+	</body>
+</html>

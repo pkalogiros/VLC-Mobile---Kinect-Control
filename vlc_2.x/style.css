@@ -1,0 +1,403 @@
+/*****************************************************************************
+ * style.css: VLC media player web interface
+ *****************************************************************************
+ * Copyright (C) 2005-2006 the VideoLAN team
+ * $Id$
+ *
+ * Authors: Antoine Cellerier <dionoea -at- videolan -dot- org>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+ *****************************************************************************/
+body {
+	background-color: #eeeeee;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	text-align: center; /* Center on page - IE */
+	padding: 0;
+	margin: 0;
+	color:#85796D;
+	width: 100%;
+	user-select:none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-moz-tap-highlight-color: rgba(0,0,0,0);
+	-o-tap-highlight-color: rgba(0,0,0,0);
+}
+
+a{
+	text-decoration:none;
+}
+
+div {
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+#header{
+	width:100%;
+	height:40px;
+	background:#2F2C38;
+	border-bottom:2px solid #666666;
+	padding:0;
+}
+
+#header .act{
+background-image: linear-gradient(bottom, rgb(17,20,19) 14%, rgb(113,184,184) 97%);
+background-image: -o-linear-gradient(bottom, rgb(17,20,19) 14%, rgb(113,184,184) 97%);
+background-image: -moz-linear-gradient(bottom, rgb(17,20,19) 14%, rgb(113,184,184) 97%);
+background-image: -webkit-linear-gradient(bottom, rgb(17,20,19) 14%, rgb(113,184,184) 97%);
+background-image: -ms-linear-gradient(bottom, rgb(17,20,19) 14%, rgb(113,184,184) 97%);
+	color:#e5e5e5;
+}
+
+.clear{
+	height:1px;
+	clear:both;
+}
+
+#first,
+#second,
+#third{
+	display:block;
+	float:left;
+	width:14px;
+	font-size:20px;
+	height:34px;
+	
+	padding-top:8px;
+	font-weight:bold;
+	text-align:center;
+	
+	background:#333;
+background-image: linear-gradient(bottom, rgb(17,20,19) 14%, rgb(74,18,18) 97%);
+background-image: -o-linear-gradient(bottom, rgb(17,20,19) 14%, rgb(74,18,18) 97%);
+background-image: -moz-linear-gradient(bottom, rgb(17,20,19) 14%, rgb(74,18,18) 97%);
+background-image: -webkit-linear-gradient(bottom, rgb(17,20,19) 14%, rgb(74,18,18) 97%);
+background-image: -ms-linear-gradient(bottom, rgb(17,20,19) 14%, rgb(74,18,18) 97%);
+	
+	color:#f2f2f2;
+	width:33%;
+	
+	text-shadow:0px 0px 2px yellow;
+	box-shadow:0px 1px 8px #bcbcbc;
+}
+
+.width46{
+	width:46%;
+}
+
+#second{
+	float:left;
+	width:34%;
+	margin:0 auto;
+}
+#third{
+	float:right;
+	width:33%;
+}
+
+#wrap{
+	margin:0 auto;
+	max-width:800px;
+	margin: 0 auto;
+	
+	min-width: 220px;
+	padding: 0 20px;
+}
+
+h1{
+	font-size:18px;
+	text-shadow:0px 0px 1px #f8f8f8;
+	display:block;
+	margin-bottom:14px;
+}
+
+.section{
+	background: #F9F9F9;
+	background: -moz-linear-gradient(top, rgba(255, 255, 255, .9), rgba(211, 211, 211, .9));
+	background: -webkit-gradient(linear,left top,left bottom,from(rgba(255, 255, 255, .9)),to(rgba(211, 211, 211, .9)));
+	background: linear-gradient(top, rgba(255, 255, 255, .9), rgba(211, 211, 211, .9));
+	border: 1px solid white;
+	border-radius: 10px;
+	box-shadow: #600 0 2px 10px;
+	color: rgba(0, 0, 0, .75);
+	font: 13px/20px "Helvetica Neue", Arial, sans-serif;
+	height: auto;
+	margin: 18px 0 18px 0;
+	min-height: 60px;
+	padding: 5px 18px;
+	position: relative;
+	text-shadow: white 0 1px 0;
+}
+
+#no-hover .button:hover,
+.button:active,
+.ie .button:hover,
+.button{
+	cursor: pointer;
+	display: inline-block;
+	background-color: #E6E6E6;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
+	background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+	background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);
+	background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+	background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+	background-image: linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+	padding: 12px 0 10px;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	color: #333333;
+	font-size: 14px;
+	font-weight:bold;
+	min-width:40px;
+	line-height: normal;
+	border: 1px solid #CCC;
+	border-bottom-color: #BBB;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	-webkit-transition: 0.1s linear all;
+	-moz-transition: 0.1s linear all;
+	-ms-transition: 0.1s linear all;
+	-o-transition: 0.1s linear all;
+	transition: 0.1s linear all;
+	text-shadow:0px 1px 2px #f4f4f4;
+	text-align:center;
+}
+
+.floatRight{
+	float:right;
+}
+
+#bar{
+	position:absolute;
+	width:100%;
+	border-top:1px solid #555555;
+	border-bottom:1px solid #a0a0a0;
+	background:#777;
+	height:4px;
+	border-radius:12px;
+	left:0;
+	top:26px;
+}
+
+.slider{
+	position:relative;
+	height:60px;
+	
+	clear:both;
+	margin:5px 0;
+}
+
+#scrub{
+	border-radius:25px;
+	width:17px;
+	padding:2px 0 0 8px;
+	height:23px;
+	background:orange;
+	box-shadow:1px 1px 8px red;
+	cursor: ew-resize;
+	left:-5px;
+	top:15px;
+	z-index:9999;
+	position:absolute;
+	user-select:none;
+	-webkit-user-select:none;
+}
+
+.volume,
+.volume.clicked{
+	width:60px;
+	height:30px;
+	font-size:24px !important;
+}
+
+.mute{
+	font-size:14px;
+	margin-left:20px;
+	height:20px;
+	margin-top:6px;
+	font-size:14px;
+	float:right;
+	width:46%;
+}
+
+#volLevel{
+	height:30px;
+	font-size:32px;
+	float:right;
+	width:50%;
+	padding-top:2px;
+	text-align:center;
+}
+#volLevel span{
+	display:block;
+	width:93%;
+	height:38px;
+	padding-top:12px;
+	border-radius:4px;
+	background:#99cc00;
+	float:right;
+}
+
+.col{
+	margin-bottom:10px;
+}
+
+.button.large{
+	width:100%;
+	margin:18px 0 0;
+}
+
+#info{
+	margin:20px 0 10px;
+}
+
+ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+ul li{
+	margin:14px 0;
+	font-size:15px;
+	color:#232323;
+	padding:10px;
+	border-radius:4px;
+	background:#d4d4d4;
+	overflow:hidden;
+}
+
+ul li.drct{
+	color:#2D5DE0;
+}
+
+
+ul li.clicked{
+	box-shadow: 0 0 10px red;
+	background: #EEE;
+}
+
+ul li.drct:first-child{
+	color:#4D0000;
+	font-weight:bold;
+	font-size:18px;
+}
+
+#fileList .enqeue{
+	font-size:12px;
+	margin-right:0;
+}
+
+li.active{
+	box-shadow:0 0 10px red;
+	background:#eeeeee;
+	font-weight:bold;
+}
+
+li a{
+	display:block;
+	float:right;
+	width:18px;
+	height:100%;
+	border:3px solid #333333;
+	padding:1px 3px;
+	margin-top:-3px;
+	text-align:center;
+	border-radius:8px;
+	font-weight:bold;
+	background:#eaeaea;
+	opacity:0.8;
+}
+
+#three li a{
+	width:auto;
+	margin-right:13px;
+}
+
+#two .button{
+	width:31%;
+	float:left;
+	margin-right:3%;
+}
+#two .button.middl{
+	margin-right:0;
+}
+
+#two .button.last{ margin-right:0; float:right; }
+
+.width100{ width:100%; margin-bottom:10px;}
+
+#wrap.showOne .three,
+#wrap.showOne .two{display:none;}
+#wrap.showOne .one{display:block;}
+
+#wrap.showTwo .three,
+#wrap.showTwo .one{display:none;}
+#wrap.showTwo .two{display:block;}
+
+#wrap.showThree .two,
+#wrap.showThree .one{display:none;}
+#wrap.showThree .three{display:block;}
+
+.two{ display:none; }
+.three{ display:none; }
+
+#info{margin-top:36px;}
+#info ul li{
+	font-size:14px;
+}
+
+
+#volume.low {
+	background:#DEFAF9;
+}
+#volume.med {
+	background:#B8E6D5;
+}
+#volume.high {
+	background:#99cc00;
+}
+#volume.veryHigh {
+	background:#D6DE00;
+}
+#volume.veryHigh2 {
+	background:#DEA600;
+}
+#volume.tooHigh {
+	background:red;
+}
+
+#no-hover .button.clicked,
+.button:hover{
+	background: 			#6EBC1F;
+	font-weight: bold;
+	color: 					#fff;
+	text-shadow: 0 -1px 1px #234403;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EDEDED), to(#BFBFBF)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, #EDEDED, #BFBFBF); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(top, #EDEDED, #BFBFBF); /* FF3.6 */
+	background-image:     -ms-linear-gradient(top, #EDEDED, #BFBFBF); /* IE10 */
+	background-image:      -o-linear-gradient(top, #EDEDED, #BFBFBF); /* Opera 11.10+ */
+	background-image:         linear-gradient(top, #EDEDED, #BFBFBF);
+}
+
