@@ -1,11 +1,23 @@
 VLC Mobile/Kinect Controls, aims to new ways to access and control the VLC Media Player.
 
-Version 1,
+Version 1.1,
 
-Supports only VLC 1.1 yet, support for VLC2, is on its way.
+CHANGELOG
+* Support for VLC 2.0 added
 
-How to install,
-Navigate to your VideoLan folder (for example, C:\Program Files (x86)\VideoLAN\VLC\ ) and open the http file,
+How to install ( VLC 2.0 )
+Navigate to your VideoLan folder (for example, C:\Program Files (x86)\VideoLAN\VLC\lua ) and open the http folder,
+if you want make a back up of its contents, and then place in it the contents of this repo.
+
+Then fire up VLC, and go to : tools > preferences, select 'Show Settings: All' (at the bottom), and then 
+interface > Main interfaces  and check "Web".
+
+Close and re-open VLC, you might get a message saying that you must allow VLC to access your network connection etc.
+Say yes to all. That's it!
+
+
+How to install (VLC 1.1)
+Navigate to your VideoLan folder (for example, C:\Program Files (x86)\VideoLAN\VLC\ ) and open the http folder,
 if you want make a back up of its contents, and then place in it the contents of this repo.
 
 Then fire up VLC, and go to : tools > preferences, select 'Show Settings: All' (at the bottom), and then 
